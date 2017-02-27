@@ -1,12 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0B050756-B061-4C3F-B486-4FF69628D2EF}"
-	ProjectSection(SolutionItems) = preProject
-		Performance1.psess = Performance1.psess
-		Tasks.txt = Tasks.txt
-	EndProjectSection
-EndProject
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoiceRecorder", "VoiceRecorder\VoiceRecorder.csproj", "{7EBEED32-BADD-4454-8309-AC8E6647EE51}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoiceRecorder.Core", "VoiceRecorder.Core\VoiceRecorder.Core.csproj", "{9144E39B-F8E8-47D1-ADCC-086E2E806778}"
