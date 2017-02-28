@@ -7,7 +7,7 @@ namespace VoiceRecorder.Audio
 {
     public class AudioRecorder : IAudioRecorder
     {
-        WaveIn waveIn;
+        WaveInEvent waveIn;
         readonly SampleAggregator sampleAggregator;
         UnsignedMixerControl volumeControl;
         double desiredVolume = 100;
@@ -42,8 +42,7 @@ namespace VoiceRecorder.Audio
             {
                 throw new InvalidOperationException("Can't begin monitoring while we are in this state: " + recordingState.ToString());
             }
-            waveIn = new WaveIn();
-            waveIn.DeviceNumber = recordingDevice;
+            waveIn = new WaveInEvent {DeviceNumber = recordingDevice};
             waveIn.DataAvailable += OnDataAvailable;
             waveIn.RecordingStopped += OnRecordingStopped;
             waveIn.WaveFormat = recordingFormat;
@@ -56,6 +55,7 @@ namespace VoiceRecorder.Audio
         {
             recordingState = RecordingState.Stopped;
             writer.Dispose();
+            writer = null;          
             Stopped(this, EventArgs.Empty);
         }
 
@@ -153,11 +153,11 @@ namespace VoiceRecorder.Audio
         {
             get
             {
-                if(writer == null)
+                if (writer == null)
                 {
                     return TimeSpan.Zero;
                 }
-                return TimeSpan.FromSeconds((double)writer.Length / writer.WaveFormat.AverageBytesPerSecond);
+                return TimeSpan.FromSeconds((double) writer.Length/writer.WaveFormat.AverageBytesPerSecond);
             }
         }
 
